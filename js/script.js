@@ -11,6 +11,22 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
     This array is global.
 */
+var quotes = [
+  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
+  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
+  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
+  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
+  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'}
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+  // {quote: , source:, citation:, date:, tag:},
+];
 
 /*
   Function: getRandomQuote()
@@ -18,15 +34,18 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
   Output: Object
   Description: Returns a randomly selected quote object.
 */
+function getRandomQuote() {
+  var ranQuote = quotes[Math.floor(Math.random() * (quotes.length - 1))];
+  return ranQuote;
+}
 
 /*
   Function: printQuote()
   Input: None
-  Output:
+  Output: None
   Description:
     - Calls the getRandomQuote() function and stores that object into a variable.
     - Constructs a string containing the different properties of the quote object.
-    -
 */
 /*
                       FORMAT for printQuote()
@@ -41,6 +60,20 @@ printQuote only adds a <span class="year"> if the quote object has a year proper
 printQuote displays the final HTML string to the page. You can use this JS snippet to accomplish that:
 document.getElementById('quote-box').innerHTML
 */
+function printQuote() {
+  var ranQuote = getRandomQuote();
+  var quoteShown = '<p class="quote">';
+  quoteShown += (ranQuote.quote + '</p>');
+  quoteShown += ('<p class="source">'
+              + ranQuote.source
+                + '<span class="citation">'
+                + ranQuote.citation + '</span>'
+                  + '<span class="year">'
+                  + ranQuote.date + '</span>');
+  quoteShown += ranQuote.tag;
+  quoteShown += '</p>';
+  document.getElementById('quote-box').innerHTML = quoteShown;
+}
 
 /*
   EXTRA CREDIT
