@@ -3,6 +3,15 @@
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
 
 /*
+  EXTRA CREDIT
+  - Add Tags property to the array.
+  - Random background colour.
+  - Auto-refresh the quote after a set amount of time.
+    >>> window.setInterval() && window.setTimeout()
+*/
+var intervalID = setInterval(printQuote, 3000);
+
+/*
   Array of Quotes (At Least 5 Quotes)
     Must have at LEAST the following two properties:
     Quote & Source
@@ -12,8 +21,13 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
     This array is global.
 */
 var quotes = [
-  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
-  {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
+  {quote: "Here's to the ones who dream, foolish as they may seem. Here's to the hearts that ache; here's to the mess we make.",
+  source: 'Mia', citation: 'La La Land',
+  date: '2017', tag:'Movies'},
+  {quote: 'We rip out so much of ourselves to be cured of things faster than we should that we go bankrupt by the age of thirty'
+  + 'and have less to offer each time we start with someone new. But to feel nothing so as not to feel anything - what a waste!',
+  source: 'Mr. Perlman', citation:'Call Me By Your Name',
+  date:'2017', tag: 'Books'},
   {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
   {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'},
   {quote: 'hello', source: 'adele', citation:'n/a', date:'2017', tag:'music'}
@@ -69,16 +83,9 @@ function printQuote() {
                 + '<span class="citation">'
                 + ranQuote.citation + '</span>'
                   + '<span class="year">'
-                  + ranQuote.date + '</span>');
-  quoteShown += ranQuote.tag;
+                  + ranQuote.date + '</span>'
+                    + '<span class="year">'
+                    + ranQuote.tag + '</span>');
   quoteShown += '</p>';
   document.getElementById('quote-box').innerHTML = quoteShown;
 }
-
-/*
-  EXTRA CREDIT
-  - Add Tags property to the array.
-  - Random background colour.
-  - Auto-refresh the quote after a set amount of time.
-    >>> window.setInterval() && window.setTimeout()
-*/
