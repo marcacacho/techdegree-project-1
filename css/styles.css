@@ -55,6 +55,10 @@
   content: ", ";
   font-style: normal;
 }
+.tag:before {
+  content: ", ";
+  font-style: normal;
+}
 
 #loadQuote {
   position: fixed;
